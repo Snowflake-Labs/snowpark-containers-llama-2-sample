@@ -22,7 +22,7 @@ The following will get your account setup to run the demo.
 
 ### Load transcript data
 
-Browse to [_setup/load_data.sql](./_setup/load_data.sql) and run the SQL to create the table and load the data. You can do this via the VS Code extension or copy/paste into Snowflake.
+Browse to [_setup/1_load_data.sql](./_setup/1_load_data.sql) and run the SQL to create the table and load the data. You can do this via the VS Code extension or copy/paste into Snowflake.
 
 ### Create required objects
 
