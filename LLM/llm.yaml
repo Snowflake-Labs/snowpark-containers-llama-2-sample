@@ -1,0 +1,29 @@
+spec:
+  containers:
+    - name: llm-container
+      image: <<repository_url>>/llm
+      env:
+        HF_USERNAME: <<HF_USERNAME>>
+        HF_TOKEN: <<HF_TOKEN>>
+        NUM_GPU: 1 # if running in GPU 7 or GPU 10, update accordingly
+        MAX_GPU_MEMORY: 24Gib # if running in GPU 7 or GPU 10, update accordingly
+      volumeMounts:
+        - name: models
+          mountPath: /models
+    - name: udf
+      image: <<repository_url>>/udf-flask
+      env:
+        OPENAI_API_BASE: http://localhost:8000/v1
+        MODEL: Llama-2-7b-chat-hf
+  endpoints:
+    - name: chat
+      port: 5000
+      public: false
+    - name: llm
+      port: 8000
+      public: true
+  volumes:
+    - name: models
+      source: "@<<database>>.<<schema>>.models"
+  networkPolicyConfig:
+    allowInternetEgress: false

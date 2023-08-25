@@ -1,0 +1,3 @@
+# Examples for illustration
+
+If interested, the following files illustrate the differences in ease of use between Snowpark Container Services and Kubernetes from a user model point of view. In this directory, [llm.yaml](./llm.yaml) and [kube_llm.yaml](./kube_llm.yaml) would be examples of doing comparable deployments. You can see in Snowpark Container Services we can describe the metadata in about 10 lines of YAML, and in Kubernetes it takes over 100. This isn't even fully accurate, as the yaml is missing things like annotations and metadata to enable NVIDIA drivers and containers which itself would be another big step for users.

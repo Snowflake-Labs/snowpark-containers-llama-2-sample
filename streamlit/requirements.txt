@@ -1,0 +1,4 @@
+openai
+python-dotenv
+streamlit
+snowflake-snowpark-python[pandas]
