@@ -6,14 +6,14 @@ CREATE SECURITY INTEGRATION snowservices_ingress_oauth
 
 -- Stage to store LLM models
 CREATE STAGE IF NOT EXISTS models
- ENCRYPTION = (TYPE='SNOWFLAKE_SSE')
+ ENCRYPTION = (TYPE='SNOWFLAKE_SSE');
 
 -- Stage to store yaml specs
 CREATE STAGE IF NOT EXISTS specs
- ENCRYPTION = (TYPE='SNOWFLAKE_SSE')
+ ENCRYPTION = (TYPE='SNOWFLAKE_SSE');
 
 -- Image registry
-CREATE OR REPLACE IMAGE REPOSITORY images
+CREATE OR REPLACE IMAGE REPOSITORY images;
 
 -- Compute pool to run containers
 CREATE COMPUTE POOL gpu_3
