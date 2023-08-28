@@ -18,7 +18,7 @@ The following will get your account setup to run the demo.
 
 ### Clone this sample
 
-`git clone https://github.com/Snowflake-Labs/snowpark-container-llama-2-sample`
+`git clone https://github.com/Snowflake-Labs/snowpark-containers-llama-2-sample`
 
 ### Load transcript data
 
