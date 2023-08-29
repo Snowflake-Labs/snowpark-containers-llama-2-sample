@@ -72,6 +72,8 @@ start_service() {
     echo "$module is ready."
 }
 
+check_for_model
+
 start_service fastchat.serve.controller controller.log
 start_service fastchat.serve.model_worker model_worker.log --model-path /models/$HF_REPO --num-gpus $NUM_GPU --max-gpu-memory $MAX_GPU_MEMORY
 start_service fastchat.serve.openai_api_server api.log --host 0.0.0.0 --port 8000
