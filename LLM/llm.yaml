@@ -26,4 +26,4 @@ spec:
     - name: models
       source: "@<<database>>.<<schema>>.models"
   networkPolicyConfig:
-    allowInternetEgress: false
+    allowInternetEgress: true
