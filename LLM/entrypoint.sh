@@ -31,8 +31,7 @@ check_for_model() {
       echo "The provided model does not exist in the stage."
       echo "Cloning the repository into temporary directory..."
       # Clone the repository into the temporary directory
-      GIT_TRACE=1
-      git clone --depth 1 https://huggingface.co/$HF_ORG/$HF_REPO $TEMP_DIR
+      GIT_TRACE=1 git clone --depth 1 https://huggingface.co/$HF_ORG/$HF_REPO $TEMP_DIR
       cd "$TEMP_DIR"
 
       echo "Copying contents to model stage..."
