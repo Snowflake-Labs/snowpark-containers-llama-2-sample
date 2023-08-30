@@ -64,7 +64,7 @@ SET transcript =
 **Representative:** Of course! I\'ve added a request for a vegetarian meal to your booking. Anything else I can assist with?\n
 **Customer:** That\'s all for now. Thank you for your help!\n
 **Representative:** You\'re welcome. Safe travels!\n'
-WHERE id = '007';
+WHERE call_id = '007';
 
 UPDATE customer_support_transcripts 
 SET transcript = 
@@ -82,7 +82,7 @@ SET transcript =
     **Representative:** You\'re welcome! Safe travels, and thank you for choosing our airline. Have a great day!\n
     **Customer:** You too! Goodbye.\n
     **Representative:** Goodbye!'
-WHERE id = '008';
+WHERE call_id = '008';
 
 UPDATE customer_support_transcripts 
 SET transcript = 
@@ -98,7 +98,7 @@ SET transcript =
     **Representative:** It\'s no problem at all. To reach our office, once you enter Terminal 3, go towards the check-in counters and you\'ll see signs for "Airline Help Desks". We\'re at Desk 45. Someone will be there to assist you. Safe travels and take care!\n
     **Customer:** Will do! Thanks again and have a great day.\n
     **Representative:** You too! Let us know if you need any further assistance. Goodbye!'
-WHERE id = '009';
+WHERE call_id = '009';
 
 
 UPDATE customer_support_transcripts 
@@ -113,7 +113,7 @@ SET transcript =
     **Representative:** I respect your decision and am truly sorry to see you go. Your feedback is invaluable, and I promise we\'ll use it to improve. Should you ever decide to give us another chance, please know that we\'re committed to making it a positive experience.\n
     **Customer:** I\'ll think about it. For now, I need a break from your airline. Goodbye.\n
     **Representative:** I understand. Take care, and thank you for the years of trust. If you ever wish to discuss anything in the future, we\'re here to listen. Goodbye.'
-WHERE id = '010';
+WHERE call_id = '010';
 
 UPDATE customer_support_transcripts
 SET transcript = 
@@ -132,7 +132,7 @@ SET transcript =
 **Customer:** Thank you, I appreciate it. Goodbye!
 **Representative:** Goodbye, Emily. Take care and have a wonderful journey!
 '
-WHERE id = '011';
+WHERE call_id = '011';
 
 UPDATE customer_support_transcripts
 SET transcript = 
@@ -152,7 +152,7 @@ SET transcript =
 **Representative:** You\'re welcome! If you have any more questions or need further assistance, feel free to ask. Have a wonderful flight next Friday!
 **Customer:** Thank you, I appreciate your assistance. Goodbye!
 **Representative:** Goodbye! If you need anything else in the future, don\'t hesitate to reach out. Have a fantastic day!'
-WHERE id = '012';
+WHERE call_id = '012';
 
 UPDATE customer_support_transcripts
 SET transcript = 
@@ -171,7 +171,7 @@ SET transcript =
 **Customer:** Thanks, I appreciate your help. Have a wonderful day!
 **Representative:** Thank you! You too, have a fantastic day and safe travels!
 '
-WHERE id = '013';
+WHERE call_id = '013';
 
 UPDATE customer_support_transcripts
 SET transcript = 
@@ -192,4 +192,4 @@ SET transcript =
 **Customer:** I appreciate your help. Have a wonderful day!
 **Representative:** Thank you! You too, have a fantastic day and a safe trip!
 '
-WHERE id = '014';
+WHERE call_id = '014';
