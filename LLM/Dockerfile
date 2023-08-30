@@ -1,6 +1,6 @@
 FROM nvcr.io/nvidia/pytorch:23.06-py3
 
-RUN pip3 install --upgrade pip && pip3 install accelerate fschat
+RUN pip3 install --upgrade pip && pip3 install accelerate fschat transformers
 RUN apt-get update && \
     apt-get install -y git curl rsync && \
     curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \

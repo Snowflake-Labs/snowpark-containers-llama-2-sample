@@ -51,6 +51,8 @@ start_service() {
     local log_file=$2
     local params=${@:3}
 
+    touch $log_file
+
     echo "Starting $module..."
     python3 -m $module $params > $log_file 2>&1 &
 
