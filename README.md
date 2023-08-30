@@ -98,8 +98,9 @@ And push the image to your image registry.
 
 I created a simple script to make this easy. Before running you'll need to know:
 1. Your repository_url
-2. Your HuggingFace username
-3. A HuggingFace read token (you can get this from your HuggingFace account page)
+2. A warehouse for the Streamlit app to use for queries
+3. Your HuggingFace username
+4. A HuggingFace read token (you can get this from your HuggingFace account page)
 
 ```
 bash ./config_project.sh
