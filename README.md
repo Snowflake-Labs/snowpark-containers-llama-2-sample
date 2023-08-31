@@ -200,7 +200,7 @@ You can use `watch` or continue to run the above command if you're waiting for o
 
 ### Show how you can call in Streamlit
 
-Open to the Streamlit app you deployed (in main schema or in "already-running-LLM schema") as the last part of the setup portion. If the LLM is running you should be able to send messages and get responses. If the LLM is not running you'll get an error - likely about URL not being able to resolve.
+Open to the Streamlit app you deployed (in main schema or in "already-running-LLM schema") as the last part of the setup portion. If the LLM is running you should be able to send messages and get responses. If the LLM is not running / has an error, you'll see the Streamlit app returning an error of `APIConnectionError: Error communicating with OpenAI: HTTPConnectionPool(host=llama_2, port=8000)`. As an FYI, the reason you see "OpenAI" in this error message is the demo is using the [OpenAI API **format**](https://github.com/lm-sys/FastChat/blob/main/docs/openai_api.md) to communicate with Llama_2. It's not calling the OpenAI service or APIs at all.
 
 ### Create a SQL function
 
