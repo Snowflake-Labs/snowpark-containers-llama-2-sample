@@ -27,8 +27,11 @@ check_for_model() {
       git lfs install
       # Create a temporary directory
       TEMP_DIR=$(mktemp -d)
-
+      echo "\n\n"
       echo "The provided model does not exist in the stage."
+      echo "This startup script will download it for you and save to stage. This can take a few minutes."
+      echo "This will not need to download on future startups."
+      echo "\n\n"
       echo "Cloning the repository into temporary directory..."
       # Clone the repository into the temporary directory
       GIT_TRACE=1 git clone --depth 1 https://huggingface.co/$HF_ORG/$HF_REPO $TEMP_DIR
