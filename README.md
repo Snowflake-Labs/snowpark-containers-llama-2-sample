@@ -47,7 +47,7 @@ There are 3 containers used in the demo.
 3. Streamlit container - a container to demo calling the LLM from Streamlit in a chat app (using the OpenAI API format)
 
 ⚠️ BE SURE TO BUILD THESE FOR `linux/amd64`⚠️
-If you are using a Mac M1 or M2 device, by default your docker client may build ARM based images. Our compute pools today are x86. You will need to make sure you are using Docker buildx so that you can build and emulate x86 images. You can do this by running `docker buildx create --use --name x86_64-builder --platform linux/amd64` and then `docker buildx build --platform linux/amd64 -t <image_name> .` for each of the images.
+If you are using a Mac M1 or M2 device, by default your docker client may build ARM based images. Our compute pools today are x86. You will need to make sure you are using Docker emulation so that you can build and emulate x86 images. You can do this by running `docker buildx create --use --name x86_64-builder --platform linux/amd64` and then `docker build --platform linux/amd64 -t <image_name> .` for each of the images.
 
 #### Get the repository URL
 
@@ -57,7 +57,7 @@ Run:
 #### LLM Container
 Browse to [LLM/](./LLM) locally in a terminal session, and run:
 `docker build -t llm .`
-Be sure to see the warning above if using Mac M1 or M2 device to modify this using the buildx and --platform flags.
+Be sure to see the warning above if using Mac M1 or M2 device to modify this using the --platform flags.
 
 Once the docker container is built, we need to tag it to map to your registry. You can do this by running: 
 
