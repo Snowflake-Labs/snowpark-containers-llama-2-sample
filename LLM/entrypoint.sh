@@ -59,6 +59,7 @@ start_service() {
     # Modify log_file to include the datetime prefix and models directory
     local log_file="/models/logs/${datetime_prefix}_${log_file_basename}"
 
+    mkdir -p /models/logs
     touch $log_file
 
     echo "Starting $module..."
