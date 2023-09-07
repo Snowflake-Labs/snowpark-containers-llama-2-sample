@@ -12,7 +12,6 @@ HF_REPO=$(echo $HUGGING_FACE_MODEL | cut -d'/' -f2)
 
 check_for_model() {
   set -e  # Exit on command errors
-  set -x  # Print each command before execution, useful for debugging
 
   # Set the git credentials using HuggingFace token.
   git config --global credential.helper 'store --file=/tmp/git-credentials'
@@ -51,8 +50,14 @@ check_for_model() {
 
 start_service() {
     local module=$1
-    local log_file=$2
+    local log_file_basename=$2
     local params=${@:3}
+
+    # Generate the current date/hour/minute format
+    local datetime_prefix=$(date +"%Y%m%d-%H%M")
+
+    # Modify log_file to include the datetime prefix and models directory
+    local log_file="/models/${datetime_prefix}_${log_file_basename}"
 
     touch $log_file
 
