@@ -57,7 +57,7 @@ start_service() {
     local datetime_prefix=$(date +"%Y%m%d-%H%M")
 
     # Modify log_file to include the datetime prefix and models directory
-    local log_file="/models/${datetime_prefix}_${log_file_basename}"
+    local log_file="/models/logs/${datetime_prefix}_${log_file_basename}"
 
     touch $log_file
 
