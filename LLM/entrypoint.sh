@@ -10,8 +10,9 @@ fi
 export HF_ORG=$(echo $HUGGING_FACE_MODEL | cut -d'/' -f1)
 export HF_MODEL=$(echo $HUGGING_FACE_MODEL | cut -d'/' -f2)
 export TARGET_DIR="/models/$HF_MODEL"
+export TARGET_CONFIG="$TARGET_DIR/config.json"
 
-if [ -d "$TARGET_DIR" ]; then
+if [ -f "$TARGET_CONFIG" ]; then
     echo "Model appears to exist in stage. Skipping download..."
 else
     echo ""
