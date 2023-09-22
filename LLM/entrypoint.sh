@@ -7,46 +7,22 @@ if [ -z "${HUGGING_FACE_MODEL}" ]; then
 fi
 
 # Extract org and repo from HUGGING_FACE_MODEL
-HF_ORG=$(echo $HUGGING_FACE_MODEL | cut -d'/' -f1)
-HF_REPO=$(echo $HUGGING_FACE_MODEL | cut -d'/' -f2)
+export HF_ORG=$(echo $HUGGING_FACE_MODEL | cut -d'/' -f1)
+export HF_MODEL=$(echo $HUGGING_FACE_MODEL | cut -d'/' -f2)
+export TARGET_DIR="/models/$HF_MODEL"
 
-check_for_model() {
-  set -e  # Exit on command errors
-
-  # Set the git credentials using HuggingFace token.
-  git config --global credential.helper 'store --file=/tmp/git-credentials'
-  echo "https://$HF_USERNAME:$HF_TOKEN@huggingface.co" > /tmp/git-credentials
-
-  TARGET_DIR="/models/$HF_REPO"
-
-  # Check if the target directory exists
-  if [ -d "$TARGET_DIR" ]; then
-      echo "Model appears to exist in stage. Skipping download..."
-  else
-      git lfs install
-      # Create a temporary directory
-      TEMP_DIR=$(mktemp -d)
-      echo "\n\n"
-      echo "The provided model does not exist in the stage."
-      echo "This startup script will download it for you and save to stage. This can take a few minutes."
-      echo "This will not need to download on future startups."
-      echo "\n\n"
-      echo "Cloning the repository into temporary directory..."
-      # Clone the repository into the temporary directory
-      GIT_TRACE=1 git clone --depth 1 https://huggingface.co/$HF_ORG/$HF_REPO $TEMP_DIR
-      cd "$TEMP_DIR"
-
-      echo "Copying contents to model stage..."
-      # Copy contents of the temporary directory to TARGET_DIR
-      rsync -a --exclude=".git" "$TEMP_DIR/" "$TARGET_DIR/"
-
-      # Clean up temporary directory
-      rm -rf "$TEMP_DIR"
-  fi
-
-  # Remove the temporary credentials.
-  rm /tmp/git-credentials
-}
+if [ -d "$TARGET_DIR" ]; then
+    echo "Model appears to exist in stage. Skipping download..."
+else
+    echo ""
+    echo ""
+    echo "The provided model does not exist in the stage."
+    echo "This startup script will download it for you and save to stage. This can take a few minutes."
+    echo "This will not need to download on future startups."
+    echo ""
+    echo ""
+    python /download_model.py
+fi
 
 start_service() {
     local module=$1
@@ -83,10 +59,8 @@ start_service() {
     echo "$module is ready."
 }
 
-check_for_model
-
 start_service fastchat.serve.controller controller.log
-start_service fastchat.serve.model_worker model_worker.log --model-path /models/$HF_REPO --num-gpus $NUM_GPU --max-gpu-memory $MAX_GPU_MEMORY
+start_service fastchat.serve.model_worker model_worker.log --model-path /models/$HF_MODEL --num-gpus $NUM_GPU --max-gpu-memory $MAX_GPU_MEMORY
 start_service fastchat.serve.openai_api_server api.log --host 0.0.0.0 --port 8000
 
 # wait indefinitely

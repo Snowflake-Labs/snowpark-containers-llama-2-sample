@@ -21,7 +21,7 @@ spec:
       public: false
     - name: llm
       port: 8000
-      public: true
+      public: false
   volumes:
     - name: models
       source: "@<<database>>.<<schema>>.models"
