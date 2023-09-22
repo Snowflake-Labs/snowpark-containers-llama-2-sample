@@ -3,7 +3,6 @@ spec:
     - name: downloader
       image: sfengineering-servicesnow.registry.snowflakecomputing.com/jeff_db/public/jhollan_repository/huggingface
       env:
-        HF_USERNAME: <your username>
         HF_TOKEN: <your token>
         HF_MODEL: Llama-2-70b-chat-hf
         HF_ORG: meta-llama
