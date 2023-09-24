@@ -16,8 +16,8 @@ streamlit_file="./streamlit/streamlit.yaml"
 sed -i "s/<<repository_url>>/$repository_url/g" $llm_file
 sed -i "s/<<HF_USERNAME>>/$hf_username/g" $llm_file
 sed -i "s/<<HF_TOKEN>>/$hf_token/g" $llm_file
-sed -i "s/<<database>>/$hf_token/g" $llm_file
-sed -i "s/<<schema>>/$hf_token/g" $llm_file
+sed -i "s/<<database>>/$database/g" $llm_file
+sed -i "s/<<schema>>/$schema/g" $llm_file
 
 # Replace placeholders in Streamlit file
 sed -i "s/<<repository_url>>/$repository_url/g" $streamlit_file
