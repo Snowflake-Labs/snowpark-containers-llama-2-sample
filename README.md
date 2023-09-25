@@ -11,10 +11,15 @@ This repo will give you the setup scripts and code required to run the Snowpark 
 - Access to Snowpark Container Services PrPr
 - A [HuggingFace](https://huggingface.co/) account
 - Completed [Llama 2 request form](https://ai.meta.com/resources/models-and-libraries/llama-downloads/). **Your Hugging Face account email address MUST match the email you provide on the Meta website, or your request will not be approved.**
+- After approval, submit the form in [HuggingFace](https://huggingface.co/meta-llama/Llama-2-7b-chat-hf) to unlock access to the model.
 
 ## Setup for Demo
 
 The following will get your account setup to run the demo.
+
+### Make sure you have access to Llama 2
+
+Be sure to complete the steps in the Pre-Reqs section to request access for Llama 2 from Meta, as well as enabling access in the Llama-2 HuggingFace repo.
 
 ### Clone this sample
 
