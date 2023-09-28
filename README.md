@@ -107,6 +107,9 @@ I created a simple script to make this easy. Before running you'll need to know:
 3. Your HuggingFace username (NOT your email, but the username in profile)
 4. A HuggingFace read token (you can get this from your HuggingFace account page)
 
+> NOTE: A few users have reported that this script does not replace the values in the `llm.yaml` and `streamlit.yaml` as expected. it uses a bash command called `sed` to do the replacement. It's worth checking the yaml files after completion to make sure values like `<<repository_url>>` are replaced. If not, you can replicate the script by just replacing this strings manually.
+
+
 ```
 bash ./config_project.sh
 ```
