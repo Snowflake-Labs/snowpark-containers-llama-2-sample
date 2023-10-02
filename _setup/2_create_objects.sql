@@ -6,10 +6,12 @@ CREATE SECURITY INTEGRATION snowservices_ingress_oauth
 
 -- Stage to store LLM models
 CREATE STAGE IF NOT EXISTS models
+ DIRECTORY = (ENABLE = TRUE)
  ENCRYPTION = (TYPE='SNOWFLAKE_SSE');
 
 -- Stage to store yaml specs
 CREATE STAGE IF NOT EXISTS specs
+ DIRECTORY = (ENABLE = TRUE)
  ENCRYPTION = (TYPE='SNOWFLAKE_SSE');
 
 -- Image registry
