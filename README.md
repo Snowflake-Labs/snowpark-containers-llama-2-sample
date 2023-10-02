@@ -198,8 +198,14 @@ spec='llm.yaml';
 ### Make sure an LLM is started
 If you have a second already-running LLM you can skip this part. If you are waiting for the LLM to start in real time, you will need to wait for the LLM to finish starting up. The easiest way to do this for me is the Snowflake CLI. Run the following Snowflake CLI command to tail the logs of the LLM service:
 
+Snowflake CLI
 ```
 snow snowpark services logs llama_2 --container_name llm-container --environment <environment_name>
+```
+
+SQL
+```
+call system$get_service_logs('llama_2', '0', 'llm-container', '100');
 ```
 
 The service is fully started when you see the line: **llama_2/0 fastchat.serve.openai_api_server is ready**
@@ -232,3 +238,26 @@ Show how it works with 1. Then remove `limit 1` and re-run. This will now run th
 ### Celebrate
 
 Party, close the deal, and pass any feedback to jeff.hollan@snowflake.com
+
+---
+
+### Troubleshooting
+If you're hitting issues with any of the above, here's a few pointers:
+
+#### I'm getting an error calling my LLM from Streamlit or UDF
+1. Check the logs:
+```
+-- the llm container that hosts the LLM and exposes an OpenAI compatible endpoint
+call system$get_service_logs('llama_2', '0', 'llm-container', '100');
+-- the udf converter that accepts a Snowflake UDF request and calls the LLM - runs in the llama_2 service
+call system$get_service_logs('llama_2', '0', 'udf', '100');
+-- the streamlit app
+call system$get_service_logs('streamlit', '0', 'streamlit', '100');
+```
+
+2. Be sure to check your `.yaml` files you uploaded for service definition.
+
+#### I'm getting a weird error in logs about exec format error
+This almost always means it's trying to run an ARM based computer on x86 infra. Re-build, re-tag, and re-push your container images but be sure to include the `--platform linux/amd64` flag in the docker build.
+
+
