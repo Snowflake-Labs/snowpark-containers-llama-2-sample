@@ -1,6 +1,6 @@
 FROM nvcr.io/nvidia/pytorch:23.06-py3
 
-RUN pip3 install --upgrade pip && pip3 install accelerate fschat[model_worker] huggingface_hub
+RUN pip3 install --upgrade pip && pip3 install accelerate fschat transformers==4.33.3 huggingface_hub
 
 COPY entrypoint.sh /entrypoint.sh
 COPY download_model.py /download_model.py
