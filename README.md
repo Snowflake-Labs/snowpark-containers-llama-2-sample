@@ -228,8 +228,8 @@ endpoint=chat;
 ### Pull out information from the transcripts
 
 ```
-select transcript, llm('Given the following transcript, return a JSON object with the following properties: "call_summary", "root_cause", "resolution", "ending_customer_sentiment": ' || transcript)
-from customer_support_transcripts
+select transcript, llm('Given the following transcript, return a JSON object with the following structure: { "call_summary": "", "root_cause": "", "resolution": "", "ending_customer_sentiment": ""}' || transcript)
+from shared_db.public.customer_support_transcripts
 limit 1;
 ```
 
