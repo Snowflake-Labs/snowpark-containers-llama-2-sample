@@ -8,8 +8,17 @@ read -p "What schema is your \"models\" stage in? " schema
 read -p "What is your HuggingFace token? " hf_token
 
 # Paths to the files
+makefile="./Makefile"
 llm_file="./LLM/llm.yaml"
 streamlit_file="./streamlit/streamlit.yaml"
+
+# Copy files
+cp $makefile.template $makefile
+cp $llm_file.template $llm_file
+cp $streamlit_file.template $streamlit_file
+
+# Replace placeholders in Makefile file using | as delimiter
+sed -i "" "s|<<repository_url>>|$repository_url|g" $makefile
 
 # Replace placeholders in LLM file using | as delimiter
 sed -i "" "s|<<repository_url>>|$repository_url|g" $llm_file

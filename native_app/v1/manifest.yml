@@ -1,0 +1,24 @@
+manifest_version: 1
+
+artifacts:
+  setup_script: setup.sql
+  readme: readme.md
+
+references:
+  - CUSTOMER_SUPPORT_TRANSCRIPTS:
+      label: "Customer Support Transcripts"
+      description: "Table that contains customer support transcripts"
+      privileges:
+        - SELECT
+        - REFERENCES
+      object_type: TABLE
+      multi_valued: false
+      register_callback: v1.register_single_callback
+  - STREAMLIT_WAREHOUSE:
+      label: "Streamlit Warehouse"
+      description: "Warehouse to use with Streamlit in SPCS"
+      privileges:
+        - USAGE
+      object_type: WAREHOUSE
+      multi_valued: false
+      register_callback: v1.register_single_callback

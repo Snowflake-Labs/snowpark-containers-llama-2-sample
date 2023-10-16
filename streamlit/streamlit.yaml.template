@@ -1,11 +1,11 @@
 spec:
   containers:
     - name: streamlit
-      image: sfsenorthamerica-bmh-prod3.registry.snowflakecomputing.com/llama1/local/images/streamlit
+      image: <<repository_url>>/streamlit
       env:
         OPENAI_API_BASE: http://llama-2:8000/v1
         MODEL: Llama-2-7b-chat-hf
-        SNOWFLAKE_WAREHOUSE: wh_xs
+        SNOWFLAKE_WAREHOUSE: <<warehouse_name>>
   endpoints:
     - name: streamlit
       port: 8501

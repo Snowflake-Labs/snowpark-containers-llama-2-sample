@@ -1,3 +1,7 @@
 .venv
 .env
 __pycache__
+Makefile
+LLM/llm.yaml
+streamlit/streamlit.yaml
+native_app/v1/manifest.yaml

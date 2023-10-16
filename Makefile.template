@@ -1,0 +1,32 @@
+REPO?=<<repository_url>>
+
+login:
+	docker login $(REPO)
+
+all: login build push
+
+build: build_llm build_udf_api build_streamlit
+
+build_llm:
+	cd LLM && docker build --platform linux/amd64 -t llm . && cd ..
+
+build_udf_api:
+	cd udf_api && docker build --platform linux/amd64 -t udf-flask . && cd ..
+
+build_streamlit:
+	cd streamlit && docker build --platform linux/amd64 -t streamlit . && cd ..
+
+push: push_llm push_udf_api push_streamlit
+
+push_llm:
+	docker tag llm $(REPO)/llm
+	docker push $(REPO)/llm
+
+push_udf_api:
+	docker tag udf-flask $(REPO)/udf-flask
+	docker push $(REPO)/udf-flask
+
+push_streamlit:
+	docker tag streamlit $(REPO)/streamlit
+	docker push $(REPO)/streamlit
+

@@ -1,0 +1,17 @@
+spec:
+  containers:
+    - name: streamlit
+      image: /*/code_schema/demo_repo/streamlit
+      env:
+        OPENAI_API_BASE: http://llama-2:8000/v1
+        MODEL: Llama-2-7b-chat-hf
+      volumeMounts:
+        - name: config
+          mountPath: /snowflake_config
+  endpoints:
+    - name: streamlit
+      port: 8501
+      public: true
+  volumes:
+    - name: config
+      source: "@app_internal.config"

@@ -1,16 +1,18 @@
 spec:
   containers:
     - name: llm-container
-      image: sfsenorthamerica-bmh-prod3.registry.snowflakecomputing.com/llama1/local/images/llm
+      image: /*/code_schema/demo_repo/llm
       env:
-        HF_TOKEN: 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
+        HF_TOKEN: <<HF_TOKEN>>
         NUM_GPU: 1 # if running in GPU 7 or GPU 10, update accordingly
         MAX_GPU_MEMORY: 24Gib # if running in GPU 7 or GPU 10, update accordingly
       volumeMounts:
+        - name: config
+          mountPath: /snowflake_config
         - name: models
           mountPath: /models
     - name: udf
-      image: sfsenorthamerica-bmh-prod3.registry.snowflakecomputing.com/llama1/local/images/udf-flask
+      image: /*/code_schema/demo_repo/udf-flask
       env:
         OPENAI_API_BASE: http://localhost:8000/v1
         MODEL: Llama-2-7b-chat-hf
@@ -20,9 +22,11 @@ spec:
       public: false
     - name: llm
       port: 8000
-      public: false
+      public: true
   volumes:
+    - name: config
+      source: "@app_internal.config"
     - name: models
-      source: "@llama1.local.models"
+      source: "@app_public.models"
   networkPolicyConfig:
     allowInternetEgress: true
