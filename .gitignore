@@ -4,4 +4,5 @@ __pycache__
 Makefile
 LLM/llm.yaml
 streamlit/streamlit.yaml
-native_app/v1/manifest.yaml
+native_app/v1/llm.yaml
+native_app/Makefile
