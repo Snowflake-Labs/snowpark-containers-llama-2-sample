@@ -5,20 +5,8 @@ from snowflake.snowpark import Session
 from utils import create_session_object
 
 table = os.getenv('REFERENCE.CUSTOMER_SUPPORT_TRANSCRIPTS') or "customer_support_transcripts"
-st.sidebar.json(dict(os.environ))
-st.sidebar.json({
-        "table": table,
-        "warehouse": os.getenv("SNOWFLAKE_WAREHOUSE") or None
-    })
 
 session:Session = create_session_object()
-st.sidebar.json({
-    "user": session._conn._conn.user,
-    "role": session.get_current_role(),
-    "conn_role": session._conn._conn.role,
-    "warehouse": session.get_current_warehouse(),
-    "conn_warehouse": session._conn._conn.warehouse
-})
 
 openai.api_key = "NotNeeded"
 openai.api_base = os.getenv("OPENAI_API_BASE")
