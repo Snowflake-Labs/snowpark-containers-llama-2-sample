@@ -31,8 +31,7 @@ st.subheader("Trial 1")
 
 @st.cache_data
 def load_data():
-    #df = session.table(table)
-    df = session.sql("SELECT * FROM Reference('CUSTOMER_SUPPORT_TRANSCRIPTS')")
+    df = session.table(table)
     return df.to_pandas()
 
 
