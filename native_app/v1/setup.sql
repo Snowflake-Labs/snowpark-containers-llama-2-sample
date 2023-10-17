@@ -305,7 +305,7 @@ def handler(session):
     df = pd.DataFrame(session.sql("LIST @app_public.models/logs").collect())
     if df.shape[0] < 1:
         return session.sql("SELECT 'name' AS name, 0::INT AS size, 'md5' AS md5, 'last_modified' AS last_modified WHERE 1 = 0")
-    vals = ", ".join("('" + df['name'] + "', " + df['size'].astype('str') + ", '" + df['md5'] + "', '" + df['last_modified'] + "')")
+    vals = ", ".join("('" + df['name'].str.replace("models/logs/") + "', " + df['size'].astype('str') + ", '" + df['md5'] + "', '" + df['last_modified'] + "')")
     return session.sql(f"SELECT $1 AS name, $2::INT AS size, $3 AS md5, $4 AS last_modified FROM VALUES {vals}")
 $$;
 GRANT USAGE ON PROCEDURE app_public.list_logs() TO APPLICATION ROLE app_admin;
