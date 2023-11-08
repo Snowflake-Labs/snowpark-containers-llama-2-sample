@@ -1,4 +1,4 @@
-openai
+openai<1
 python-dotenv
 streamlit
 snowflake-snowpark-python[pandas]
