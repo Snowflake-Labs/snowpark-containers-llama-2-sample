@@ -42,7 +42,7 @@ This will create:
 
 ### Login to the Snowflake Image Registry
 
-Follow **ONLY STEP 4** in [the following doc](https://docs.snowflake.com/LIMITEDACCESS/snowpark-containers/tutorials/tutorial-1#build-an-image-and-upload) to authenticate with your image registry from your docker client. The image registry created for you was called **images**. NOTE: at time of writing is a typo in docs. The current SnowCLI command is `snow snowpark registry token -c <cli_environment_name>`
+Follow **ONLY STEP 4** in [the following doc](https://docs.snowflake.com/LIMITEDACCESS/snowpark-containers/tutorials/tutorial-1#build-an-image-and-upload) to authenticate with your image registry from your docker client. The image registry created for you was called **images**. NOTE: at time of writing is a typo in docs. The full command is SnowCLI command is `snow registry token -c <cli_environment_name> --format=JSON | docker login <registry-hostname> -u 0sessiontoken --password-stdin`
 
 ### Build the container images
 
@@ -126,8 +126,8 @@ snow connection add
 
 # upload the YAML files
 # replace <connection_name> with the name of connection above
-snow stage put ./streamlit/streamlit.yaml specs -c <connection_name> --overwrite
-snow stage put ./LLM/llm.yaml specs -c <connection_name> --overwrite
+snow object stage put ./streamlit/streamlit.yaml specs -c <connection_name> --overwrite
+snow object stage put ./LLM/llm.yaml specs -c <connection_name> --overwrite
 ```
 
 ### Deploy the Streamlit container
@@ -200,7 +200,7 @@ If you have a second already-running LLM you can skip this part. If you are wait
 
 Snowflake CLI
 ```
-snow snowpark services logs llama_2 --container_name llm-container --environment <environment_name>
+ snow containers service logs llama_2 --container-name llm-container --instance-id 0 -c <environment_name>
 ```
 
 SQL
