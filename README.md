@@ -200,7 +200,7 @@ If you have a second already-running LLM you can skip this part. If you are wait
 
 Snowflake CLI
 ```
- snow containers service logs llama_2 --container-name llm-container --instance-id 0 -c <environment_name>
+snow containers service logs llama_2 --container-name llm-container --instance-id 0 -c <environment_name>
 ```
 
 SQL
