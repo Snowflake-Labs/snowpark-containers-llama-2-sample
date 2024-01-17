@@ -7,7 +7,7 @@ This repo will give you the setup scripts and code required to run the Snowpark 
 ## Pre-requisites
 - Docker Desktop (or some way to build containers)
 - [VS Code](https://code.visualstudio.com/) (recommended)
-- Access to Snowpark Container Services Preview
+- Access to Snowpark Container Services Preview - details on region availability can be found [here](https://github.com/Snowflake-Labs/spcs-updates).
 - [Snowflake CLI](https://github.com/Snowflake-Labs/snowcli) (optional but recommended)
 - A [HuggingFace](https://huggingface.co/) account
 - Completed [Llama 2 request form](https://ai.meta.com/resources/models-and-libraries/llama-downloads/). **Your Hugging Face account email address MUST match the email you provide on the Meta website, or your request will not be approved.**
