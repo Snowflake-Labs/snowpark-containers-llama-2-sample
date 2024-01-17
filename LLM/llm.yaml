@@ -1,0 +1,33 @@
+spec:
+  containers:
+    - name: llm-container
+      image: <<repository_url>>/llm
+      resources:
+        requests:
+          nvidia.com/gpu: 1 # if running NV_M or NV_L, update accordingly
+        limits:
+          nvidia.com/gpu: 1 # if running NV_M or NV_L, update accordingly
+      env:
+        HF_TOKEN: <<HF_TOKEN>>
+        NUM_GPU: 1 # if running in NV_M or NV_L, update accordingly
+        MAX_GPU_MEMORY: 24Gib # if running in NV_M or NV_L, update accordingly
+      volumeMounts:
+        - name: models
+          mountPath: /models
+    - name: udf
+      image: <<repository_url>>/udf-flask
+      env:
+        OPENAI_API_BASE: http://localhost:8000/v1
+        MODEL: Llama-2-7b-chat-hf
+  endpoints:
+    - name: chat
+      port: 5000
+      public: false
+    - name: llm
+      port: 8000
+      public: false
+  volumes:
+    - name: models
+      source: "@<<database>>.<<schema>>.models"
+  networkPolicyConfig:
+    allowInternetEgress: true

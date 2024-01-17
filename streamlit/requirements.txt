@@ -1,0 +1,4 @@
+openai==1.7.2
+python-dotenv==1.0.0
+streamlit==1.30.0
+snowflake-snowpark-python[pandas]==1.11.1

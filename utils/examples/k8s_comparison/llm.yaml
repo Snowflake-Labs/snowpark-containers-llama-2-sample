@@ -1,0 +1,18 @@
+spec:
+  containers:
+    - name: llm-container
+      image: sfengineering-servicesnow.registry.snowflakecomputing.com/jeff_db/public/jhollan_repository/fastchat
+      env:
+        MODEL: /models/Llama-2-7b-chat-hf
+      volumeMounts:
+        - name: models
+          mountPath: /models
+  endpoints:
+    - name: chat
+      port: 5000
+      public: false
+  volumes:
+    - name: models
+      source: "@jeff_db.public.models"
+  networkPolicyConfig:
+    allowInternetEgress: false
