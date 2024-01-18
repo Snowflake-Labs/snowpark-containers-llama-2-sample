@@ -29,5 +29,3 @@ spec:
   volumes:
     - name: models
       source: "@<<database>>.<<schema>>.models"
-  networkPolicyConfig:
-    allowInternetEgress: true

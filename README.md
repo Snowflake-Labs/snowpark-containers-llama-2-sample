@@ -31,10 +31,14 @@ Browse to [_setup/1_load_data.sql](./_setup/1_load_data.sql) and run the SQL to 
 
 ### Create required objects
 
-Browse to [_setup/2_create_objects.sql](./_setup/2_create_objects.sql) and run the SQL to create the required objects. You can do this via the VS Code extension or copy/paste into Snowflake.  The SECURITY INTEGRATION **MUST** be run by an ACCOUNTADMIN for the account (if already run for the account this can be skipped).
+Browse to [_setup/2_create_objects.sql](./_setup/2_create_objects.sql). Replace the `<your_role>` placeholder in the `GRANT USAGE ON INTEGRATION` with the role you will be using to create your services. NOTE that you need to use a non-ACCOUNTADMIN role to create services.
+
+Run the SQL to create the required objects. You can do this via the VS Code extension or copy/paste into Snowflake.
+
+The SECURITY INTEGRATION and NETWORK / INTEGRATIONS **MUST** be run by an ACCOUNTADMIN for the account (if already run for the account this can be skipped).
 
 This will create:
-1. SECURITY INTEGRATION to allow Oauth to containers (if not already enabled for the account)
+1. SECURITY INTEGRATION to allow Oauth to containers (if not already enabled for the account), and NETWORK access to allow the container to download from huggingface.
 2. A stage to store the LLM that is downloaded. This will allow us to cache the LLM for faster startup in future runs.
 3. A stage to upload and store the YAML specs for the containers.
 4. A container image registry to push our docker images
@@ -176,7 +180,8 @@ In Snowflake:
 create service llama_2
 in compute pool GPU_NV_S
 from @specs
-spec='llm.yaml';
+spec='llm.yaml'
+EXTERNAL_ACCESS_INTEGRATIONS = (hf_access_integration);
 ```
 
 ### Make sure an LLM is started

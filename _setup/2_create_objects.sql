@@ -1,3 +1,15 @@
+-- MUST BE RUN BY ACCOUNTADMIN to allow connecting to huggingface to download the model
+CREATE OR REPLACE NETWORK RULE hf_network_rule
+  MODE = EGRESS
+  TYPE = HOST_PORT
+  VALUE_LIST = ('huggingface.co');
+
+CREATE EXTERNAL ACCESS INTEGRATION hf_access_integration
+  ALLOWED_NETWORK_RULES = (hf_network_rule)
+  ENABLED = true;
+
+GRANT USAGE ON INTEGRATION hf_access_integration TO ROLE <your_role>;
+
 -- MUST BE RUN BY ACCOUNTADMIN to allow browsing to containers via HTTPS
 CREATE SECURITY INTEGRATION snowservices_ingress_oauth
   TYPE=oauth
