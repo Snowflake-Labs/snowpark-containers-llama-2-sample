@@ -1,6 +1,6 @@
 # Llama 2 and Snowpark Container Services Demo
 
-> To see Jeff Hollan demo this as part of the Snowflake Demo Challenge, check out [the recording](https://www.youtube.com/watch?v=FbZqfoUwKns).
+> To see Jeff Hollan demo this as part of the Snowflake Demo Challenge, check out [the recording](https://youtu.be/ECN2aCL4lvs).
 
 This repo will give you the setup scripts and code required to run the Snowpark Container Services demo of building an LLM powered function in Snowflake to pull out information on chat transcripts stored in Snowflake.
 
