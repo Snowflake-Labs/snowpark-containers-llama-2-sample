@@ -181,7 +181,7 @@ create service llama_2
 in compute pool GPU_NV_S
 from @specs
 spec='llm.yaml'
-EXTERNAL_ACCESS_INTEGRATIONS = (hf_access_integration);
+EXTERNAL_ACCESS_INTEGRATIONS = (HF_ACCESS_INTEGRATION);
 ```
 
 ### Make sure an LLM is started

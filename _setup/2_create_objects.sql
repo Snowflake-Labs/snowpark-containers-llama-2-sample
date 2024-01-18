@@ -2,7 +2,7 @@
 CREATE OR REPLACE NETWORK RULE hf_network_rule
   MODE = EGRESS
   TYPE = HOST_PORT
-  VALUE_LIST = ('huggingface.co');
+  VALUE_LIST = ('huggingface.co', 'cdn-lfs.huggingface.co');
 
 CREATE EXTERNAL ACCESS INTEGRATION hf_access_integration
   ALLOWED_NETWORK_RULES = (hf_network_rule)
