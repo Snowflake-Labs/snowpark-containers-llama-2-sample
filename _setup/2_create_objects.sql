@@ -9,6 +9,7 @@ CREATE EXTERNAL ACCESS INTEGRATION hf_access_integration
   ENABLED = true;
 
 GRANT USAGE ON INTEGRATION hf_access_integration TO ROLE <your_role>;
+GRANT BIND SERVICE ENDPOINT ON ACCOUNT TO ROLE <your_role>;
 
 -- MUST BE RUN BY ACCOUNTADMIN to allow browsing to containers via HTTPS
 CREATE SECURITY INTEGRATION snowservices_ingress_oauth
