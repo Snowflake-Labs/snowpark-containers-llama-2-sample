@@ -154,7 +154,7 @@ spec='streamlit.yaml';
 **Wait for about 30 seconds** for the URL to fully propogate via DNS, and then get the URL:
 
 ```
-show services in schema;
+snow endpoints in service streamlit;
 ```
 
 Find the `public_endpoints` column and copy the URL in the "streamlit" value (e.g. `d6zzoi75-sfengineering-servicesnow.snowflakecomputing.app`). This is URL you can use to browse to the Streamlit app in the demo.
